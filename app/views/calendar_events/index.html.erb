@@ -1,0 +1,31 @@
+<% content_for :javascript do %>
+	<script type="text/javascript">
+  		$(document).ready(function(){
+			$("#flash").animate({opacity: 1.0}, 2000).fade('slow');
+			$("a.emphasize").click(function() {
+				event_id = "#calendar_event_" + this.id;
+				bullet_id = "#" + this.id;
+				
+				//toggle the emphasis class to bold the event name text
+				$(event_id).toggleClass("emphasis");
+				
+				//toggle the bold/unbold image
+				if ($(event_id).hasClass("emphasis")) {
+					$(bullet_id + "> img").attr("src", "images/bold.gif");
+					
+				} else {
+					$(bullet_id + "> img").attr("src", "images/unbold.gif");	
+				}
+			});
+		});	
+	</script>
+<% end %>
+
+<%= render :partial => "calendar_title_bar"  %>
+
+<table id="events_list">
+	<%= render :partial => 'calendar_event', :collection => @calendar_events %>
+</table>
+
+<%= will_paginate @calendar_events, {:id => "pagination"} %>
+

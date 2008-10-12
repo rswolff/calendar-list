@@ -1,0 +1,27 @@
+<h1>New calendar_event_preset</h1>
+
+<% form_for(@calendar_event_preset) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :event_name %><br />
+    <%= f.text_field :event_name %>
+  </p>
+  <p>
+    <%= f.label :event_time %><br />
+    <%= f.text_field :event_time %>
+  </p>
+  <p>
+    <%= f.label :event_location %><br />
+    <%= f.text_field :event_location %>
+  </p>
+  <p>
+    <%= f.label :event_tags %><br />
+    <%= f.text_area :event_tags %>
+  </p>
+  <p>
+    <%= f.submit "Create" %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', calendar_event_presets_path %>

@@ -1,0 +1,30 @@
+<p>
+  <b>Start:</b>
+  <%=h @calendar_event.start_date %>
+</p>
+
+<p>
+  <b>Name:</b>
+  <%=h @calendar_event.name %>
+</p>
+
+<p>
+  <b>Location:</b>
+  <%=h @calendar_event.location %>
+</p>
+
+<p>
+  <b>Category:</b>
+  <%=h @calendar_event.category_id %>
+</p>
+
+<p>
+  <b>Emphasis:</b>
+  <%=h @calendar_event.emphasis %>
+</p>
+
+
+<%= link_to 'Edit', edit_calendar_event_path(@calendar_event) %> |
+<%= link_to 'Back', calendar_events_path %>
+
+<%= debug params %>

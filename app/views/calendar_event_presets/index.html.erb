@@ -1,0 +1,26 @@
+<h1>Listing calendar_event_presets</h1>
+
+<table>
+  <tr>
+    <th>Event name</th>
+    <th>Event time</th>
+    <th>Event location</th>
+    <th>Event tags</th>
+  </tr>
+
+<% for calendar_event_preset in @calendar_event_presets %>
+  <tr>
+    <td><%=h calendar_event_preset.event_name %></td>
+    <td><%=h calendar_event_preset.event_time %></td>
+    <td><%=h calendar_event_preset.event_location %></td>
+    <td><%=h calendar_event_preset.event_tags %></td>
+    <td><%= link_to 'Show', calendar_event_preset %></td>
+    <td><%= link_to 'Edit', edit_calendar_event_preset_path(calendar_event_preset) %></td>
+    <td><%= link_to 'Destroy', calendar_event_preset, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New calendar_event_preset', new_calendar_event_preset_path %>

@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  event_name: 
+  event_time: 
+  event_location: 
+  event_tags: MyText
+
+two:
+  event_name: 
+  event_time: 
+  event_location: 
+  event_tags: MyText

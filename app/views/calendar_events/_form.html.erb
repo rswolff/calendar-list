@@ -1,0 +1,101 @@
+<% content_for :javascript do %>
+<%= javascript_include_tag 'date' %>
+<%= javascript_include_tag 'date.format.js' %>
+<%= javascript_include_tag 'jquery.autocomplete.js' %>
+<script type="text/javascript">
+	$(document).ready(function(){
+	    
+		$("#calendar_event_name").autocomplete(
+			"<%= calendar_preset_search_url %>",
+			{
+				delay:10,
+				minChars:2,
+				matchSubset:1,
+				matchContains:1,
+				cacheLength:10,
+				//onItemSelect:selectItem,
+				//onFindValue:findValue,
+				//formatItem:formatItem,
+				autoFill:true
+			});
+	
+	
+		$(".date").change(function () {
+			d = dateFormat (Date.parse($(this).val()), "d-mmm-yyyy")
+			if ($(this).val() != '') {
+				$(this).val(d)		
+			}			
+	    });
+	
+	    $(".time").change(function () {
+			// parse the time only if the time is provided
+			if ($(this).val() != '') {
+				d = dateFormat (Date.parse($(this).val()), "h:MM TT")				
+				$(this).val(d)
+			}
+	    });	
+	
+		$("#toggle_end_datetime").click(function() {
+			$("#end_datetime").slideToggle("fast", function(){
+				if ($(this).is(":hidden")) {
+					$('#toggle_end_datetime').text("Show End Date/Time")				
+				} else {
+					$('#toggle_end_datetime').text("Hide End Date/Time")					
+				}
+			});
+		})
+	 });
+</script>
+<% end %>
+
+<% form_for(@calendar_event) do |f| %>
+  <%= f.error_messages %>
+  <fieldset>
+    <%= f.label :name %><br />
+    <%= f.text_field :name, {:style => "font-size: 18px; padding: 3px; width: 600px"} %>
+  </fieldset>
+<fieldset>
+<div class="span-8">
+    <%= f.label :start_date, "Date" %><br />
+    <%= f.text_field :start_date, {:class => 'date'} %>	
+</div>
+<div class="span-15 last">
+    <%= f.label :start_time, "Time" %><br />
+    <%= f.text_field :start_time, {:class => 'time'} %>	
+</div>
+
+<a href="#" id="toggle_end_datetime" style="margin: 15px 0px" class="small quiet">Show End Date/Time</a>
+
+<div id="end_datetime" style="display:none">
+	<div class="span-8">
+	    <%= f.label :end_date, "End Date" %><br />
+	    <%= f.text_field :end_date, {:class => 'date'} %>	
+	</div>
+	<div class="span-15 last">
+	    <%= f.label :end_time, "End Time" %><br />
+	    <%= f.text_field :end_time, {:class => 'time'} %>	
+	</div>
+</div>
+
+<div class="span-23 last" style="margin-top: 25px">
+    <%= f.label :location %><br />
+    <%= f.text_field :location %>	
+</div>
+
+</fieldset>
+<fieldset>
+  <p>
+    <%= f.label :emphasis, "Add Emphasis" %>
+    <%= f.check_box :emphasis %>
+  </p>
+</fieldset>
+<fieldset>
+  <p>
+	<%= f.label :description %><br />
+	<%= f.text_area :description %>
+  </p>
+</fieldset>
+  <p>
+    <%= f.submit "Create" %>
+  </p>
+<% end %>

@@ -1,0 +1,10 @@
+<h2>Users</h2>
+<table>
+<% @users.each do |u| %>
+	<tr>
+		<td><%= u.login %></td>
+		<td><%= u.name %></td>
+		<td><%= u.created_at.strftime("%B %d, %Y") %></td>
+	</tr>
+<% end %>
+<table>

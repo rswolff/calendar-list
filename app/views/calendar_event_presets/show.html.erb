@@ -1,0 +1,23 @@
+<p>
+  <b>Event name:</b>
+  <%=h @calendar_event_preset.event_name %>
+</p>
+
+<p>
+  <b>Event time:</b>
+  <%=h @calendar_event_preset.event_time %>
+</p>
+
+<p>
+  <b>Event location:</b>
+  <%=h @calendar_event_preset.event_location %>
+</p>
+
+<p>
+  <b>Event tags:</b>
+  <%=h @calendar_event_preset.event_tags %>
+</p>
+
+
+<%= link_to 'Edit', edit_calendar_event_preset_path(@calendar_event_preset) %> |
+<%= link_to 'Back', calendar_event_presets_path %>

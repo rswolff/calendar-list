@@ -1,0 +1,71 @@
+@page {
+	size: portrait;
+}
+
+body {
+	font-family: "Lucida Grande";
+	font-size: 13.7px;
+}
+
+h1.title {
+	margin: 20px 0px;
+}
+
+h2.calendar-title {
+	margin: 0px;
+}
+
+li {
+	margin: 15px 0px;
+}
+
+table#events_list tr td {
+	height: 32px;
+	line-height: 32px;
+	padding: 0px;
+	vertical-align: middle
+}
+
+table#events_list tr td img {
+	vertical-align: middle	
+}
+
+textarea {
+	font-family: "Lucida Grande", verdana, sans-serif;
+	font-size: 16px;
+	height: 75px;
+	width: 890px;
+}
+.emphasis {
+	font-weight: bold;
+	text-transform: uppercase;
+}
+
+div#calendar-header {
+	margin-bottom: 20px;
+}
+
+div.pagination {
+	height: 40px;
+	margin: 0px auto;
+	margin-top: 15px;
+	width: 100%;
+}
+
+div.pagination a {
+	background-color: #eee;
+	border: 1px solid #ccc;
+	padding: 5px;
+}
+
+.current {
+	background-color: #00F7FF;
+	border: 1px solid #999;
+	padding: 5px;	
+}
+
+.prev_page, .next_page {
+	background-color: #eee;
+	border: 1px solid #ccc;
+	padding: 5px;
+}
