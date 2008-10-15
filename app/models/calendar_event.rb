@@ -1,5 +1,6 @@
 class CalendarEvent < ActiveRecord::Base
   acts_as_taggable
+  belongs_to :day
   belongs_to :category
   validates_presence_of :start_date, :name
   

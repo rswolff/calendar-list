@@ -11,10 +11,10 @@
 				
 				//toggle the bold/unbold image
 				if ($(event_id).hasClass("emphasis")) {
-					$(bullet_id + "> img").attr("src", "images/bold.gif");
+					$(bullet_id + "> img").attr("src", "/images/bold.gif");
 					
 				} else {
-					$(bullet_id + "> img").attr("src", "images/unbold.gif");	
+					$(bullet_id + "> img").attr("src", "/images/unbold.gif");	
 				}
 			});
 		});	
@@ -22,10 +22,7 @@
 <% end %>
 
 <%= render :partial => "calendar_title_bar"  %>
-
+<% @counter = 1 %>
 <table id="events_list">
-	<%= render :partial => 'calendar_event', :collection => @calendar_events %>
+	<%= render :partial => 'date', :collection => @days %>
 </table>
-
-<%= will_paginate @calendar_events, {:id => "pagination"} %>
-

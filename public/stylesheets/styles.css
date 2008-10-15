@@ -69,3 +69,11 @@ div.pagination a {
 	border: 1px solid #ccc;
 	padding: 5px;
 }
+
+.rowA {
+	background-color: #ccc;
+}
+
+.rowB {
+	background-color: #fff;
+}

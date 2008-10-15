@@ -1,0 +1,25 @@
+<% unless date.calendar_events.length < 1 %>
+	<% row_colour = cycle("rowA", "rowB") %>
+<% end %>
+
+<% date.calendar_events.each do |calendar_event| %>
+<tr class="<%= row_colour %>">
+	<td><%= "#{@counter}. " %></td>
+	<td><%= calendar_event.date %></td>
+	<td>
+		<% unless calendar_event.start_time.nil? %>
+			<%= h calendar_event.start_time.strftime("%I:%M %p")%>
+		<% else %>
+			-
+		<% end %>
+	</td>
+	<td>
+		<%= link_to_remote (calendar_event.emphasis ? image_tag("bold.gif") : image_tag("unbold.gif")), {:update => nil, :url => {:action => 'toggle_emphasis', :id => calendar_event.id}}, {:class => "emphasize", :id => calendar_event.id}  %>
+		<%= link_to calendar_event.name_and_location, edit_calendar_event_path(calendar_event), {:id => "calendar_event_#{calendar_event.id}", :class => (calendar_event.emphasis ? "emphasis" : nil)} %>
+	</td>
+	<td><%= link_to image_tag("delete.gif"), calendar_event, :confirm => "Delete #{calendar_event.name}?", :method => :delete %></td>			
+</tr>
+
+<% @counter += 1%>
+
+<% end %>

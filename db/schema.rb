@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20081006230517) do
+ActiveRecord::Schema.define(:version => 20081015034514) do
 
   create_table "calendar_event_presets", :force => true do |t|
     t.string   "event_name"
@@ -39,6 +39,12 @@ ActiveRecord::Schema.define(:version => 20081006230517) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "sort_priority", :limit => 11
+  end
+
+  create_table "days", :force => true do |t|
+    t.date     "d"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "roles", :force => true do |t|
