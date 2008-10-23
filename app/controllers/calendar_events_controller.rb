@@ -5,7 +5,7 @@ class CalendarEventsController < ApplicationController
   # GET /calendar_events
   # GET /calendar_events.xml
   def index
-    @calendar_events = CalendarEvent.future.paginate :page => params[:page], :order => 'start_date'
+    @calendar_events = CalendarEvent.future.paginate :page => params[:page], :order => 'start_date start_time'
    
     respond_to do |format|
       format.html # index.html.erb
