@@ -26,3 +26,5 @@
 <table id="events_list">
 	<%= render :partial => 'date', :collection => @days %>
 </table>
+
+<%= will_paginate @days%>
