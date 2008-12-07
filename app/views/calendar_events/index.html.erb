@@ -23,8 +23,31 @@
 
 <%= render :partial => "calendar_title_bar"  %>
 <% @counter = 1 %>
+
+
+<%= d = nil %>
+<% counter = 1%>
+
 <table id="events_list">
-	<%= render :partial => 'date', :collection => @days %>
+	<% @calendar_events.each do |e| %>
+		<tr id="<%= e.id %>" class="event-row">
+			<td><%= "#{counter}. " %></td>
+			<td><%= e.start_date.strftime("%d-%b") %></td>
+			<td>
+				<% unless e.start_time.nil? %>
+					<%= h e.start_time.strftime("%I:%M %p")%>
+				<% else %>
+					-
+				<% end %>
+			</td>
+			<td>
+				<%= link_to_remote (e.emphasis ? image_tag("bold.gif") : image_tag("unbold.gif")), {:update => nil, :url => {:action => 'toggle_emphasis', :id => e.id}}, {:class => "emphasize", :id => e.id}  %>
+				<%= link_to e.name_and_location, edit_calendar_event_path(e), {:id => "calendar_event_#{e.id}", :class => (e.emphasis ? "emphasis" : nil)} %>
+			</td>
+			<td><%= link_to image_tag("delete.gif"), e, :confirm => "Delete #{e.name}?", :method => :delete %></td>
+		</tr>
+		<% counter += 1%>
+	<% end %>
 </table>
 
-<%= will_paginate @days%>
+<%= will_paginate %>

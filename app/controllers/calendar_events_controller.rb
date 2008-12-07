@@ -5,8 +5,8 @@ class CalendarEventsController < ApplicationController
   # GET /calendar_events
   # GET /calendar_events.xml
   def index
-    #@calendar_events = CalendarEvent.future.paginate :page => params[:page], :order => 'start_date, start_time'
-    @days = Day.find(:all, :conditions => ["d #{(Date.today.to_date..params[:n].weeks.from_now.to_date ).to_s(:db)}"]).paginate :page => params[:page]
+    @calendar_events = CalendarEvent.future.paginate :page => params[:page], :order => 'start_date, start_time'
+    
     respond_to do |format|
       format.html # index.html.erb
       format.iphone { render :layout => false }
@@ -91,13 +91,10 @@ class CalendarEventsController < ApplicationController
     end
   end
   
-  def rolling
-    #n = params[:n].to_i
-    #s = Date.today
-    #e = n.weeks.from_now
-    #@calendar_events = CalendarEvent.in_range(s,e).paginate :page => params[:page], :order => 'start_date'
-    #TODO: This has to be changed to find all events in a range of weeks
-    @days = Day.find(:all, :conditions => ["d #{(Date.today.to_date..params[:n].to_i.weeks.from_now.to_date ).to_s(:db)}"]).paginate :page => params[:page]
+  def rolling 
+    n = params[:n].to_i
+    #@days = Day.find(:all, :conditions => ["d #{(Date.today.to_date..n.weeks.from_now.to_date ).to_s(:db)}"]).paginate :page => params[:page]
+    @calendar_events = CalendarEvent.in_range(Date.today, n.weeks.from_now).paginate :page => params[:page]
     render :template => "calendar_events/index"
   end
   
