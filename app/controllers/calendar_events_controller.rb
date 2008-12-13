@@ -94,6 +94,7 @@ class CalendarEventsController < ApplicationController
   def rolling 
     n = params[:n].to_i
     #@days = Day.find(:all, :conditions => ["d #{(Date.today.to_date..n.weeks.from_now.to_date ).to_s(:db)}"]).paginate :page => params[:page]
+    
     @calendar_events = CalendarEvent.in_range(Date.today, n.weeks.from_now).paginate :page => params[:page]
     render :template => "calendar_events/index"
   end

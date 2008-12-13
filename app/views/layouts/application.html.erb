@@ -30,7 +30,7 @@
 
 		<div id="nav">
 			<ul class="dropdown dropdown-horizontal">
-				<li><%= image_tag("calendar_month.gif") %> <%= link_to "Calendar", calendar_events_path %></li>
+				<li><%= image_tag("calendar_month.gif") %> <%= link_to "Home", calendar_events_path %></li>
 				<li><%= image_tag('calendar_plus.gif') %> <%= link_to "New Event", new_calendar_event_path %></li>
 				<li class="dir">
 					<%= image_tag('calendar.gif') %> View
@@ -41,7 +41,7 @@
 					</ul>
 				</li>
 				<li class="dir">
-					<%= image_tag('printer.gif') %> Print
+					<%= image_tag('printer.gif') %> <%= link_to 'Print', print_rolling_path(params[:n]) %>
 					<ul>
 						<li><%= link_to "Print Current", print_rolling_path(params[:n])%></li>
 						<li><%= link_to '4 weeks', print_rolling_path(4)%></li>

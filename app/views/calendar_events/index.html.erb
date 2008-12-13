@@ -30,7 +30,7 @@
 	<% @calendar_events.each do |e| %>
 		<tr id="<%= e.id %>" class="event-row">
 			<td><%= "#{counter}. " %></td>
-			<td><%= e.start_date.strftime("%d-%b") %></td>
+			<td><%= e.date %></td>
 			<td>
 				<% unless e.all_day %>
 					<%= h e.start_time.strftime("%I:%M %p")%>
