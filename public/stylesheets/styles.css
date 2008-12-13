@@ -19,6 +19,10 @@ li {
 	margin: 15px 0px;
 }
 
+#user_bar {
+	margin-bottom: 30px;
+}
+
 table#events_list tr td {
 	height: 32px;
 	line-height: 32px;

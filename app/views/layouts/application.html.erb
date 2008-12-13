@@ -9,7 +9,12 @@
   <%= stylesheet_link_tag 'blueprint/print', :media => 'print' %>
   <%= stylesheet_link_tag 'blueprint/screen' %>
   <!--[if IE]><link rel="stylesheet" href="blueprint/ie.css" type="text/css" media="screen, projection"><![endif]-->  
+
+  <%= stylesheet_link_tag 'dropdown/dropdown.css'%>
+  <%= stylesheet_link_tag 'dropdown/themes/default/default.css'%>
+
   <%= stylesheet_link_tag 'styles'%>
+
   <%= yield :css %>
   
   <%= javascript_include_tag :defaults %>
@@ -18,34 +23,43 @@
 </head>
 <body>
 	<div class="container">
-		<div class="span-24 last clearfix">
-			<%= link_to "#{image_tag("calendar.gif")} Calendar", calendar_events_path %> | 
-			<%= link_to "#{image_tag('calendar_add.gif')} New Event", new_calendar_event_path %> |
-		</div>
-		
-		<div>
-			view: 
-			<%= link_to '4 Weeks', :controller => 'calendar_events', :action =>'rolling', :n => 4 %> |
-			<%= link_to '8 Weeks', :controller => 'calendar_events', :action =>'rolling', :n => 8 %> |			
-		</div>
 
-
-		<div>
-			print:
-			<%= link_to '4 weeks', print_rolling_path(4)%>
-			<%= link_to '8 weeks', print_rolling_path(8)%>
-			<%= link_to '52 weeks', print_rolling_path(52)%>
-			<%= link_to "#{image_tag('printer.gif')} Print Current", print_rolling_path(params[:n])%>			
-		</div>
-
-			
 		<div id="user_bar">
 			<%= render :partial => "users/user_bar"%>
 		</div>
+
+		<div id="nav">
+			<ul class="dropdown dropdown-horizontal">
+				<li><%= image_tag("calendar_month.gif") %> <%= link_to "Calendar", calendar_events_path %></li>
+				<li><%= image_tag('calendar_plus.gif') %> <%= link_to "New Event", new_calendar_event_path %></li>
+				<li class="dir">
+					<%= image_tag('calendar.gif') %> View
+					<ul>
+						<li><%= link_to '4 Weeks', :controller => 'calendar_events', :action =>'rolling', :n => 4 %> </li>
+						<li><%= link_to '8 Weeks', :controller => 'calendar_events', :action =>'rolling', :n => 8 %> </li>
+						<li><%= link_to '52 Weeks', :controller => 'calendar_events', :action =>'rolling', :n => 52 %> </li>
+					</ul>
+				</li>
+				<li class="dir">
+					<%= image_tag('printer.gif') %> Print
+					<ul>
+						<li><%= link_to "Print Current", print_rolling_path(params[:n])%></li>
+						<li><%= link_to '4 weeks', print_rolling_path(4)%></li>
+						<li><%= link_to '8 weeks', print_rolling_path(8)%></li>
+						<li><%= link_to '52 weeks', print_rolling_path(52)%></li>
+					</ul>
+				</li>
+			</ul>			
+		</div>
+		
+		<br />
+		<br />
+		<br />
+
 		<div class="span-24 last clearfix" style="height: 50px">
 			<% unless flash[:notice].nil? %>
 				<div id="flash" class="notice"><%= flash[:notice]%></div>
-				<% end %>
+			<% end %>
 		</div>
 		<div>
 			<%= yield  %>
