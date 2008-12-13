@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20081015034514) do
+ActiveRecord::Schema.define(:version => 20081212000248) do
 
   create_table "calendar_event_presets", :force => true do |t|
     t.string   "event_name"
@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(:version => 20081015034514) do
     t.text     "description"
     t.time     "start_time"
     t.time     "end_time"
+    t.boolean  "all_day"
   end
 
   create_table "categories", :force => true do |t|

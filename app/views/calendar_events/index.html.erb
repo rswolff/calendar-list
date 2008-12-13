@@ -34,7 +34,7 @@
 			<td><%= "#{counter}. " %></td>
 			<td><%= e.start_date.strftime("%d-%b") %></td>
 			<td>
-				<% unless e.start_time.nil? %>
+				<% unless e.all_day %>
 					<%= h e.start_time.strftime("%I:%M %p")%>
 				<% else %>
 					-

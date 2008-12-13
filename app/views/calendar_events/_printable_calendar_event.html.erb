@@ -2,7 +2,7 @@
 	<td style="width: 50px"><%= "#{printable_calendar_event_counter}." %></td>
 	<td style="width: 100px"><%= h printable_calendar_event.date %></td>
 	<td style="width: 100px">
-		<% unless printable_calendar_event.start_time.nil? %>
+		<% unless printable_calendar_event.all_day %>
 			<%= h printable_calendar_event.start_time.strftime("%I:%M %p")%>
 		<% else %>
 			-
