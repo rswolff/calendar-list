@@ -35,9 +35,9 @@
 				<li class="dir">
 					<%= image_tag('calendar.gif') %> Range
 					<ul>
-						<li><%= link_to '4 Weeks', :controller => 'calendar_events', :action =>'rolling', :n => 4 %> </li>
-						<li><%= link_to '8 Weeks', :controller => 'calendar_events', :action =>'rolling', :n => 8 %> </li>
-						<li><%= link_to '52 Weeks', :controller => 'calendar_events', :action =>'rolling', :n => 52 %> </li>
+						<li><%= link_to "Next 4 Weeks #{Date.today.strftime("%b-%d")} &#8594; #{4.weeks.from_now.strftime("%b-%d")}", :controller => 'calendar_events', :action =>'rolling', :n => 4 %> </li>
+						<li><%= link_to "Next 8 Weeks #{Date.today.strftime("%b-%d")} &#8594; #{8.weeks.from_now.strftime("%b-%d")}", :controller => 'calendar_events', :action =>'rolling', :n => 8 %> </li>
+						<li><%= link_to "Next 52 Weeks #{Date.today.strftime("%b-%d")} &#8594; #{52.weeks.from_now.strftime("%b-%d")}", :controller => 'calendar_events', :action =>'rolling', :n => 52 %> </li>
 					</ul>
 				</li>
 				<li class="dir">
@@ -52,9 +52,9 @@
 					<%= image_tag('printer.gif') %> <%= link_to 'Print', print_rolling_path(params[:n]) %>
 					<ul>
 						<li><%= link_to "Print Current", print_rolling_path(params[:n])%></li>
-						<li><%= link_to '4 weeks', print_rolling_path(4)%></li>
-						<li><%= link_to '8 weeks', print_rolling_path(8)%></li>
-						<li><%= link_to '52 weeks', print_rolling_path(52)%></li>
+						<li><%= link_to 'Next 4 weeks', print_rolling_path(4)%></li>
+						<li><%= link_to 'Next 8 weeks', print_rolling_path(8)%></li>
+						<li><%= link_to 'Next 52 weeks', print_rolling_path(52)%></li>
 					</ul>
 				</li>
 			</ul>			

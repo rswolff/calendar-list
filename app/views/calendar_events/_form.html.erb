@@ -84,6 +84,12 @@
 
 </fieldset>
 <fieldset>
+	<% View.all.each do |v| %>
+	<%= check_box_tag "calendar_event[views]", v.id %>
+	<%= v.name %><br />
+	<% end %>
+</fieldset>
+<fieldset>
   <p>
     <%= f.label :emphasis, "Add Emphasis" %>
     <%= f.check_box :emphasis %>
