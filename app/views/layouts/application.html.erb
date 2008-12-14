@@ -33,7 +33,7 @@
 				<li><%= image_tag("calendar_month.gif") %> <%= link_to "Home", calendar_events_path %></li>
 				<li><%= image_tag('calendar_plus.gif') %> <%= link_to "New Event", new_calendar_event_path %></li>
 				<li class="dir">
-					<%= image_tag('calendar.gif') %> View
+					<%= image_tag('calendar.gif') %> Range
 					<ul>
 						<li><%= link_to '4 Weeks', :controller => 'calendar_events', :action =>'rolling', :n => 4 %> </li>
 						<li><%= link_to '8 Weeks', :controller => 'calendar_events', :action =>'rolling', :n => 8 %> </li>
@@ -41,11 +41,11 @@
 					</ul>
 				</li>
 				<li class="dir">
-					<%= image_tag('report.gif') %> Reports
+					<%= image_tag('report.gif') %> Views
 					<ul>
-						<li>High Council Meetings</li>
-						<li>Stake Presidency Meetings</li>
-						<li>Ward Conferences</li>
+						<% View.all.each do |v| %>
+						<li><%= link_to v.name, view_path(v) %></li>
+						<% end %>
 					</ul>
 				</li>
 				<li class="dir">

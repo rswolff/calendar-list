@@ -1,12 +1,8 @@
-<p>
-  <b>Name:</b>
-  <%=h @view.name %>
-</p>
+<h2><%=h @view.name %></h2>
 
-<p>
-  <b>Sort order:</b>
-  <%=h @view.sort_order %>
-</p>
+<% @calendar_events = @view.calendar_events %>
+
+<%= render :partial => "/shared/calendar_events_table" %>
 
 
 <%= link_to 'Edit', edit_view_path(@view) %> |
