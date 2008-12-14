@@ -42,7 +42,7 @@
 				<%= link_to_remote (e.emphasis ? image_tag("bold.gif") : image_tag("unbold.gif")), {:update => nil, :url => {:action => 'toggle_emphasis', :id => e.id}}, {:class => "emphasize", :id => e.id}  %>
 				<%= link_to e.name_and_location, edit_calendar_event_path(e), {:id => "calendar_event_#{e.id}", :class => (e.emphasis ? "emphasis" : nil)} %>
 			</td>
-			<td><%= link_to image_tag("delete.gif"), e, :confirm => "Delete #{e.name}?", :method => :delete %></td>
+			<td><%= link_to image_tag("delete.gif"), e, :confirm => "Delete #{e.name}?", :method => :delete, :class => 'delete' %></td>
 		</tr>
 		<% counter += 1%>
 	<% end %>

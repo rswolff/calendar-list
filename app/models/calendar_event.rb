@@ -2,6 +2,11 @@ class CalendarEvent < ActiveRecord::Base
   acts_as_taggable
   belongs_to :day
   belongs_to :category
+  
+  has_many :calendar_event_views
+  has_many :views, :through => :calendar_event_views
+  
+  
   validates_presence_of :start_date, :name
   
   named_scope :future, lambda {{:conditions => ["start_date >= ?", Date.today], :order => 'start_date, start_time'}}

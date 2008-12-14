@@ -1,0 +1,20 @@
+<h1>Editing view</h1>
+
+<% form_for(@view) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :sort_order %><br />
+    <%= f.text_field :sort_order %>
+  </p>
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @view %> |
+<%= link_to 'Back', views_path %>
