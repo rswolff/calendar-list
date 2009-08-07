@@ -3,7 +3,7 @@
 	<td><%= calendar_event.date %></td>
 	<td>
 		<% unless calendar_event.all_day %>
-			<%= h calendar_event.start_time.strftime("%I:%M %p")%>
+			<%= h calendar_event.start_time.strftime("%I:%M %p") unless calendar_event.start_time.nil? %>
 		<% else %>
 			-
 		<% end %>
