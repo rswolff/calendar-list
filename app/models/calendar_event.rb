@@ -23,7 +23,7 @@ class CalendarEvent < ActiveRecord::Base
   end
   
   def date
-    d = "#{self.start_date.strftime("%b %d")}"
+    d = "#{self.start_date.strftime("%A, %B %d")}"
     
     #if it's an all day event, do not display the end date/time
     #if it's not an all day event

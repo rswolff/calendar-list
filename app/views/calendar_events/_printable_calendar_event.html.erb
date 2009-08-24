@@ -1,6 +1,6 @@
 <tr>
 	<td style="width: 50px"><%= "#{printable_calendar_event_counter}." %></td>
-	<td style="width: 100px"><%= h printable_calendar_event.date %></td>
+	<td style="width: 175px"><%= h printable_calendar_event.date %></td>
 	<td style="width: 100px">
 		<% unless printable_calendar_event.all_day %>
 			<%= h printable_calendar_event.start_time.strftime("%I:%M %p") unless printable_calendar_event.start_time.nil? %>
@@ -8,7 +8,7 @@
 			-
 		<% end %>
 	</td>
-	<td style="width: 700px">
+	<td style="width: 625px">
 		<span class = "<%= printable_calendar_event.emphasis ? "emphasis" : nil %>"><%=h printable_calendar_event.name_and_location %></span>
 	</td>
 </tr>
