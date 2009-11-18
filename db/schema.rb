@@ -21,8 +21,8 @@ ActiveRecord::Schema.define(:version => 20081214013657) do
   end
 
   create_table "calendar_event_views", :force => true do |t|
-    t.integer "calendar_event_id", :limit => 11
-    t.integer "view_id",           :limit => 11
+    t.integer "calendar_event_id"
+    t.integer "view_id"
   end
 
   create_table "calendar_events", :force => true do |t|
@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(:version => 20081214013657) do
     t.date     "end_date"
     t.string   "name"
     t.string   "location"
-    t.integer  "category_id", :limit => 11
+    t.integer  "category_id"
     t.boolean  "emphasis"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(:version => 20081214013657) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "sort_priority", :limit => 11
+    t.integer  "sort_priority"
   end
 
   create_table "days", :force => true do |t|
@@ -58,16 +58,16 @@ ActiveRecord::Schema.define(:version => 20081214013657) do
   end
 
   create_table "roles_users", :id => false, :force => true do |t|
-    t.integer "role_id", :limit => 11
-    t.integer "user_id", :limit => 11
+    t.integer "role_id"
+    t.integer "user_id"
   end
 
   add_index "roles_users", ["role_id"], :name => "index_roles_users_on_role_id"
   add_index "roles_users", ["user_id"], :name => "index_roles_users_on_user_id"
 
   create_table "taggings", :force => true do |t|
-    t.integer  "tag_id",        :limit => 11
-    t.integer  "taggable_id",   :limit => 11
+    t.integer  "tag_id"
+    t.integer  "taggable_id"
     t.string   "taggable_type"
     t.datetime "created_at"
   end
@@ -95,7 +95,7 @@ ActiveRecord::Schema.define(:version => 20081214013657) do
 
   create_table "views", :force => true do |t|
     t.string   "name"
-    t.integer  "sort_order", :limit => 11
+    t.integer  "sort_order"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
