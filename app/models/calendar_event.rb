@@ -23,14 +23,9 @@ class CalendarEvent < ActiveRecord::Base
   end
   
   def date
-    d = self.start_date
-    
-    #if it's an all day event, do not display the end date/time
-    #if it's not an all day event
-      # if the start date and end date are the same, do not display the end date/time
-      # if the start date and end date are different, display the end data
-    
-    if !self.end_date.nil?
+    d = self.start_date.strftime("%b %d")
+   
+    unless self.end_date.nil?
       if (self.start_date.mon == self.end_date.mon)
         d << "/#{self.end_date.strftime("%d")}"
       else
